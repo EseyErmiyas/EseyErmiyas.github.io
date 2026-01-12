@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esey Ermiyas - Data Analyst</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+        
+        nav {
+            background: white;
+            padding: 20px 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        nav .logo {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #667eea;
+        }
+        
+        nav .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #667eea;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 40px;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .hero .tagline {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+        
+        .hero .description {
+            font-size: 1.1em;
+            line-height: 1.8;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+        
+        .section-title {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 1.2em;
+            margin-bottom: 60px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .about-text h3 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+        
+        .about-text p {
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .highlights {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        
+        .highlights h4 {
+            color: #764ba2;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+        
+        .highlight-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .highlight-item:last-child {
+            border-bottom: none;
+        }
+        
+        .highlight-item strong {
+            color: #667eea;
+        }
+        
+        .skills-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .skill-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .skill-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        
+        .skill-card h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .skill-card p {
+            color: #666;
+            font-size: 0.95em;
+        }
+        
+        .project-showcase {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin-top: 40px;
+        }
+        
+        .project-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 50px 40px;
+        }
+        
+        .project-header h3 {
+            font-size: 2.2em;
+            margin-bottom: 15px;
+        }
+        
+        .project-header .project-meta {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .project-body {
+            padding: 40px;
+        }
+        
+        .project-overview {
+            font-size: 1.15em;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            border-radius: 8px;
+        }
+        
+        .project-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .detail-section h4 {
+            color: #667eea;
+            font-size: 1.4em;
+            margin-bottom: 20px;
+        }
+        
+        .detail-section ul {
+            list-style: none;
+        }
+        
+        .detail-section li {
+            padding: 12px 0;
+            color: #555;
+            border-bottom: 1px solid #eee;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .detail-section li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .detail-section li:last-child {
+            border-bottom: none;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 30px;
+        }
+        
+        .tech-badge {
+            background: #667eea;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+        
+        .project-cta {
+            text-align: center;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .contact-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 80px 40px;
+        }
+        
+        .contact-section h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .contact-section p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .contact-options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-btn {
+            background: white;
+            color: #667eea;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            
+            .about-grid, .project-details {
+                grid-template-columns: 1fr;
+            }
+            
+            nav .nav-links {
+                display: none;
+            }
+            
+            .section {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <div class="logo">Esey Ermiyas</div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Hi, I'm Esey</h1>
+            <p class="tagline">I turn data into stories that drive decisions</p>
+            <p class="description">
+                I'm a data analyst with a mathematics background who loves digging into datasets to find patterns that matter. Whether it's exploring what makes businesses succeed or uncovering hidden insights, I'm passionate about making complex data accessible and actionable.
+            </p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary">View My Work</a>
+                <a href="https://github.com/EseyErmiyas" target="_blank" class="btn btn-secondary">GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <h3>From Mathematics to Data Analytics</h3>
+                <p>
+                    My journey into data started with a mathematics degree from the University of East Anglia, where I developed a love for problem-solving and analytical thinking. Since then, I've been building my skills in data analysis, combining my mathematical foundation with modern tools like Python, SQL, and data visualization.
+                </p>
+                <p>
+                    Currently, I lead a sales support team at Starkstrom Limited, where I've spent over seven years helping secure major projects worth over £1 million. This role has taught me how to translate complex technical information into clear insights and how data-driven decisions impact real business outcomes.
+                </p>
+                <p>
+                    I'm now channeling my analytical skills and business experience into data analytics, where I can help organizations make smarter decisions through data.
+                </p>
+            </div>
+            
+            <div class="highlights">
+                <h4>Quick Facts</h4>
+                <div class="highlight-item">
+                    <strong>Background:</strong> Mathematics BSc + IBM Data Analytics Certified
+                </div>
+                <div class="highlight-item">
+                    <strong>Experience:</strong> 7+ years leading teams and delivering data-driven solutions
+                </div>
+                <div class="highlight-item">
+                    <strong>Approach:</strong> Combine technical rigor with business understanding
+                </div>
+                <div class="highlight-item">
+                    <strong>Passion:</strong> Exploratory analysis and continuous learning
+                </div>
+                <div class="highlight-item">
+                    <strong>Values:</strong> Strong work ethic and commitment to improvement
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section" style="background: white;">
+        <h2 class="section-title">What I Bring</h2>
+        <p class="section-subtitle">
+            A blend of analytical skills, technical tools, and real-world experience
+        </p>
+        <div class="skills-showcase">
+            <div class="skill-card">
+                <div class="skill-icon">📊</div>
+                <h3>Data Analysis</h3>
+                <p>Python, Pandas, SQL for cleaning, querying, and extracting insights from complex datasets</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">📈</div>
+                <h3>Visualization</h3>
+                <p>Creating clear, impactful charts with Matplotlib, Seaborn, and IBM Cognos</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🔍</div>
+                <h3>Statistical Methods</h3>
+                <p>Regression analysis, predictive modeling, and identifying patterns in data</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">💼</div>
+                <h3>Business Acumen</h3>
+                <p>Understanding how data insights translate into business value and strategic decisions</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <h2 class="section-title">Featured Project</h2>
+        <p class="section-subtitle">
+            Exploring real-world data to uncover actionable insights
+        </p>
+        
+        <div class="project-showcase">
+            <div class="project-header">
+                <h3>Airbnb NYC Revenue Analysis</h3>
+                <p class="project-meta">Data Analysis • Python • SQL • Statistical Modeling</p>
+            </div>
+            
+            <div class="project-body">
+                <div class="project-overview">
+                    What drives revenue for Airbnb hosts in New York City? I analyzed thousands of listings to identify the factors that separate top-performing properties from the rest. By comparing the top 1% of listings against the overall dataset, I uncovered patterns that challenge common assumptions about what makes a successful listing.
+                </div>
+                
+                <div class="project-details">
+                    <div class="detail-section">
+                        <h4>Technical Approach</h4>
+                        <ul>
+                            <li>Built automated data cleaning pipeline with outlier detection</li>
+                            <li>Created SQLite database for complex querying</li>
+                            <li>Developed comparative analysis framework</li>
+                            <li>Generated side-by-side visualizations</li>
+                            <li>Implemented statistical methods to identify dominant patterns</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <h4>Key Discoveries</h4>
+                        <ul>
+                            <li>Location matters: Bronx and Queens offer best revenue potential</li>
+                            <li>Sweet spot for ratings is 3-4 stars (5 stars shows diminishing returns)</li>
+                            <li>Optimal stay length: 1-2 nights minimum</li>
+                            <li>Instant booking has minimal impact on revenue</li>
+                            <li>Portfolio size doesn't affect individual listing performance</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 style="color: #667eea; margin-bottom: 15px;">Technologies Used</h4>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">Pandas</span>
+                        <span class="tech-badge">SQL (SQLite)</span>
+                        <span class="tech-badge">Matplotlib</span>
+                        <span class="tech-badge">Seaborn</span>
+                        <span class="tech-badge">Jupyter Notebook</span>
+                    </div>
+                </div>
+                
+                <div class="project-cta">
+                    <a href="https://github.com/EseyErmiyas/airbnb-nyc-analysis" target="_blank" class="btn btn-primary">View Full Project on GitHub →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <h2>Let's Connect</h2>
+        <p>Interested in working together or want to chat about data? I'd love to hear from you.</p>
+        <div class="contact-options">
+            <a href="mailto:EseyErmiyas@googlemail.com" class="contact-btn">📧 Email Me</a>
+            <a href="https://github.com/EseyErmiyas" target="_blank" class="contact-btn">💻 GitHub</a>
+            <a href="tel:+447961902901" class="contact-btn">📱 Call Me</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Esey Ermiyas. All rights reserved.</p>
+    </footer>
+</body>
+</html>
